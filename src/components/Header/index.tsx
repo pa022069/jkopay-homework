@@ -1,4 +1,4 @@
-import { Container } from "./style";
+import { Container, LeftArrowIcon } from "./style";
 
 interface HeaderProps {
   title: string;
@@ -6,6 +6,9 @@ interface HeaderProps {
 
 export default function Header(props: HeaderProps) {
   return (
-    <Container>{props.title}</Container>
-  )
+    <Container>
+      <LeftArrowIcon />
+      <p className="title">{props.title}</p>
+    </Container>
+  );
 }
