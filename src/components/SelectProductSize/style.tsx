@@ -5,10 +5,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 0.75rem;
-  gap: 0.625rem;
 `;
 
 export const SelectGroup = styled.div`
+  margin-bottom: 0.625rem;
   .SGHeader {
     display: flex;
     justify-content: flex-start;
@@ -39,6 +39,7 @@ export const SelectGroup = styled.div`
 export const RadioSelect = styled.div`
   input:checked + label {
     background-color: ${theme.colors.red[400]};
+    border: 1px solid ${theme.colors.red[400]};
   }
   input {
     display: none;
