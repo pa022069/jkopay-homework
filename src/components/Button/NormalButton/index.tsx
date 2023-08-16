@@ -8,7 +8,7 @@ interface ButtonProps {
 
 export default function Button(props: ButtonProps) {
   return (
-    <Container isActive={props.isActive} onClick={() => props.onClick}>
+    <Container isActive={props.isActive} onClick={props.onClick}>
       {props.children}
     </Container>
   );
