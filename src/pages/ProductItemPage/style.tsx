@@ -5,6 +5,6 @@ export const Content = styled.div`
   background-color: ${theme.colors.black};
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 12px;
+  gap: 0.75rem;
+  padding: 0.75rem;
 `;

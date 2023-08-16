@@ -8,18 +8,18 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${theme.colors.black};
-  padding: 0.625em;
+  padding: 0.625rem;
   .title {
     color: ${theme.colors.white};
     font-weight: 600;
-    font-size: 1.0625em;
+    font-size: 1.0625rem;
     line-height: 1.4;
   }
 `;
 
 export const LeftArrowIcon = styled(BsChevronLeft)`
   position: absolute;
-  left: 0.625em;
+  left: 0.625rem;
   color: ${theme.colors.white};
   font-size: ${theme.fontSize.xl};
 `;

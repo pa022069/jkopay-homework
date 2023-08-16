@@ -21,12 +21,12 @@ const theme = {
     bold: 700,
   },
   fontSize: {
-    xs: "0.75em",
-    sm: "0.875em",
-    base: "1em",
-    lg: "1.125em",
-    xl: "1.25em",
-    "2xl": "1.5em",
+    xs: "0.75rem",
+    sm: "0.875rem",
+    base: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+    "2xl": "1.5rem",
   },
 };
 
