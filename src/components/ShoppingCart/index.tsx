@@ -11,14 +11,18 @@ interface ButtonType {
   onClick: () => void;
 }
 
-export default function ShoppingCart() {
+interface ShoppingCartProps {
+  style?: React.CSSProperties;
+}
+
+export default function ShoppingCart(props: ShoppingCartProps) {
   const dispatch = useDispatch();
   const buttonList: ButtonType[] = useMemo(
     () => [
       {
         text: "加入購物車",
         isActive: false,
-        onClick: () =>
+        onClick: () => {
           dispatch(
             addItem({
               id: 111,
@@ -26,7 +30,8 @@ export default function ShoppingCart() {
               price: 1990,
               quantity: 1,
             })
-          ),
+          );
+        },
       },
       {
         text: "直接購買",
@@ -37,7 +42,7 @@ export default function ShoppingCart() {
     []
   );
   return (
-    <Container>
+    <Container style={props.style}>
       <CartButton />
       <ButtonGroup length={buttonList.length}>
         {buttonList.map((item: ButtonType) => (

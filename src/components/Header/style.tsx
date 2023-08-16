@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${theme.colors.black};
-  padding: 0.625rem;
+  padding: 0.625rem 2.5rem;
   .title {
     color: ${theme.colors.white};
     font-weight: 600;

@@ -1,24 +1,26 @@
 import { useParams } from "react-router-dom";
-import Header from "@components/Header";
-import AboutProduct from "@components/product/About";
-import ProductDetail from "@components/product/Detail";
+import AboutProduct from "@components/Product/About";
+import ProductDetail from "@components/Product/Detail";
 import itemData from "@/mock/itemData";
-import ShoppingCart from "@components/ShoppingCart";
 import { ProductPriceItem } from "@/types";
+import TProductDetail from "@/template/ProductDetail";
+import ProductSlider from "@components/Slider/ProductSlider";
+import SelectSizeModal from "@/components/Modal/SelectSizeModal";
 import { Content } from "./style";
 
 export default function ProductItemPage() {
   const { id } = useParams();
-  const data = itemData.find((item: ProductPriceItem) => item.id === id);
+  const data = itemData.itemList.find(
+    (item: ProductPriceItem) => item.id === id
+  );
 
   if (!data) {
     return <div>404</div>;
   }
 
   return (
-    <div>
-      <Header title={data.name} />
-      {/* <div>{id}</div> */}
+    <TProductDetail storeName={itemData.storeName}>
+      <ProductSlider />
       <Content>
         <ProductDetail
           name={data.name}
@@ -27,7 +29,7 @@ export default function ProductItemPage() {
         />
         {data.about && <AboutProduct data={data.about} />}
       </Content>
-      <ShoppingCart />
-    </div>
+      <SelectSizeModal />
+    </TProductDetail>
   );
 }

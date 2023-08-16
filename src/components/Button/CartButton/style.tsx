@@ -32,6 +32,7 @@ export const StyleButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
   }
   p {
     font-size: ${theme.fontSize.xs};
