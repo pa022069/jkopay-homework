@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import { Container, Content, Bar } from "./style";
+import { Bar } from "@/components/Bar";
+import { Container, Content } from "./style";
 import { ArticleType } from "@/types";
 
 interface AboutProps {

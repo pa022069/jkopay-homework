@@ -1,5 +1,5 @@
-import { Container, List, Bar, TagsGroup, Tag } from "./style";
-
+import { Container, List, TagsGroup, Tag } from "./style";
+import { Bar } from "@/components/Bar";
 interface DetailProps {
   name: string;
   tags?: string[];

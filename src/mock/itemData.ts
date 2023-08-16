@@ -30,7 +30,7 @@ const data = {
         {
           id: "111",
           size: "S",
-          types: [
+          colors: [
             {
               id: "1111",
               color: "酷炫黑",
@@ -59,12 +59,19 @@ const data = {
               price: 3999,
               originPrice: 4699,
             },
+            {
+              id: "1115",
+              color: "我是第二行選項",
+              stock: 5,
+              price: 3999,
+              originPrice: 4699,
+            },
           ],
         },
         {
           id: "112",
           size: "M",
-          types: [
+          colors: [
             {
               id: "1121",
               color: "酷炫黑",
@@ -98,7 +105,7 @@ const data = {
         {
           id: "113",
           size: "L",
-          types: [
+          colors: [
             {
               id: "1131",
               color: "酷炫黑",
@@ -132,7 +139,7 @@ const data = {
         {
           id: "114",
           size: "XL",
-          types: [
+          colors: [
             {
               id: "1141",
               color: "酷炫黑",
@@ -165,8 +172,8 @@ const data = {
         },
         {
           id: "115",
-          size: "XL",
-          types: [
+          size: "XXL",
+          colors: [
             {
               id: "1151",
               color: "酷炫黑",

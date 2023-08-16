@@ -14,7 +14,7 @@ export interface ProductPriceItemSizeDetail {
 export interface ProductPriceItemSize {
   id: string;
   size: string;
-  types: ProductPriceItemSizeDetail[];
+  colors: ProductPriceItemSizeDetail[];
 }
 
 export interface ProductPriceItem {

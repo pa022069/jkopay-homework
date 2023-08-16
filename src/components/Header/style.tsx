@@ -9,6 +9,7 @@ export const Container = styled.div`
   align-items: center;
   background-color: ${theme.colors.black};
   padding: 0.625rem 2.5rem;
+  z-index: 999;
   .title {
     color: ${theme.colors.white};
     font-weight: 600;

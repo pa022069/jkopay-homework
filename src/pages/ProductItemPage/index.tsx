@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import AboutProduct from "@components/Product/About";
 import ProductDetail from "@components/Product/Detail";
 import itemData from "@/mock/itemData";
@@ -10,6 +10,7 @@ import { Content } from "./style";
 
 export default function ProductItemPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const data = itemData.itemList.find(
     (item: ProductPriceItem) => item.id === id
   );
@@ -19,7 +20,9 @@ export default function ProductItemPage() {
   }
 
   return (
-    <TProductDetail storeName={itemData.storeName}>
+    <TProductDetail storeName={itemData.storeName} handleGoBack={() => {
+      navigate(-1);
+    }}>
       <ProductSlider />
       <Content>
         <ProductDetail
@@ -29,7 +32,7 @@ export default function ProductItemPage() {
         />
         {data.about && <AboutProduct data={data.about} />}
       </Content>
-      <SelectSizeModal />
+      <SelectSizeModal name={data.name} price={3999} options={data.price} />
     </TProductDetail>
   );
 }
