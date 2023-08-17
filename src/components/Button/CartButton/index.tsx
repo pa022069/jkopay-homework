@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { BsCartDash } from "react-icons/bs";
-import { StyleButton } from "./style";
+import { StyleButton, ButtonCount, ButtonText } from "./style";
 import { useSelector, useDispatch } from "react-redux";
 import { selectItems, clearList } from "@/redux/slices/shoppingCartSlice";
 export default function CartButton() {
@@ -18,8 +18,8 @@ export default function CartButton() {
   return (
     <StyleButton onClick={() => handleClearCart()}>
       <BsCartDash />
-      {items.length > 0 && <span className="count">{items.length}</span>}
-      <p>購物車</p>
+      {items.length > 0 && <ButtonCount className="count">{items.length}</ButtonCount>}
+      <ButtonText className="text">購物車</ButtonText>
     </StyleButton>
   );
 }

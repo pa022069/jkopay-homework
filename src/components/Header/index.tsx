@@ -1,4 +1,4 @@
-import { Container, LeftArrowIcon } from "./style";
+import { Container, LeftArrowIcon, HeaderTitle } from "./style";
 
 interface HeaderProps {
   title: string;
@@ -12,7 +12,7 @@ export default function Header(props: HeaderProps) {
       {
         props.handleGoBack && <LeftArrowIcon onClick={props.handleGoBack} />
       }
-      <p className="title">{props.title}</p>
+      <HeaderTitle className="title">{props.title}</HeaderTitle>
     </Container>
   );
 }

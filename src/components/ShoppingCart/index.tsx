@@ -58,9 +58,12 @@ export default function ShoppingCart(props: ShoppingCartProps) {
   return (
     <Container style={props.style}>
       <CartButton />
-      <ButtonGroup length={buttonList.length}>
+      <ButtonGroup>
         {buttonList.map((item: ButtonType) => (
           <Button
+            style={{
+              flex: "1 1 calc(100% / 2)"
+            }}
             key={item.text}
             isActive={item.isActive}
             onClick={item.onClick}

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Container, List, TagsGroup, Tag, Price } from "./style";
+import { Container, List, TagsGroup, Tag, Price, CurrentPrice, OriginPrice } from "./style";
 import { Bar } from "@/components/Bar";
 import { formatCurrency } from "@/utils/helper";
 interface DetailProps {
@@ -15,26 +15,26 @@ interface DetailProps {
 export default function Detail(props: DetailProps) {
   return (
     <Container>
-      <h1>{props.name}</h1>
+      <h1 className="PDetail__title">{props.name}</h1>
       <Price>
-        <div className="currentPrice">
+        <CurrentPrice>
           {props.priceRange.price.map((item: number, index: number) => (
             <Fragment key={item}>
-              {index !== 0 && <span className="dash">-</span>}
+              {index !== 0 && <span className="PDetail__dash">-</span>}
               <span className="icon">$</span>
               {formatCurrency(item)}
             </Fragment>
           ))}
-        </div>
+        </CurrentPrice>
         {props.priceRange.originPrice && (
-          <div className="originPrice">
+          <OriginPrice>
             {props.priceRange.originPrice.map((item: number, index: number) => (
               <Fragment key={item}>
-                {index !== 0 && <span className="dash">-</span>}$
+                {index !== 0 && <span className="PDetail__dash">-</span>}$
                 {formatCurrency(item)}
               </Fragment>
             ))}
-          </div>
+          </OriginPrice>
         )}
       </Price>
       {props.tags && props.tags.length !== 0 && (

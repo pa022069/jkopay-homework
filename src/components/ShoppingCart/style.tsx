@@ -10,15 +10,10 @@ export const Container = styled.div`
   gap: 0.5rem;
 `;
 
-export const ButtonGroup = styled.div<{
-  length?: number;
-}>`
+export const ButtonGroup = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex: 1 1 auto;
   font-weight: ${theme.weight.semibold}};
-  button {
-    flex: 1 1 calc(100% / ${(props) => props.length || 1});
-  }
 `;

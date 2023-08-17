@@ -10,12 +10,13 @@ export const Container = styled.div`
   background-color: ${theme.colors.black};
   padding: 0.625rem 2.5rem;
   z-index: 999;
-  .title {
-    color: ${theme.colors.white};
-    font-weight: 600;
-    font-size: 1.0625rem;
-    line-height: 1.4;
-  }
+`;
+
+export const HeaderTitle = styled.p`
+  color: ${theme.colors.white};
+  font-weight: 600;
+  font-size: 1.0625rem;
+  line-height: 1.4;
 `;
 
 export const LeftArrowIcon = styled(BsChevronLeft)`

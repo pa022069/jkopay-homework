@@ -8,6 +8,7 @@ export const Container = styled.div`
 `;
 
 const ContentFont = `
+  width: 100%;
   font-size: ${theme.fontSize.xs};
   color: ${theme.colors.white};
   line-height: 1.5;
@@ -17,13 +18,16 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  align-items: flex-start;
   font-weight: ${theme.weight.regular}};
-  h2 {
-    ${ContentFont}
-    opacity: 0.6;
-  }
-  p {
-    ${ContentFont}
-    opacity: 0.8;
+  .PAbout {
+    &__title {
+      ${ContentFont}
+      opacity: 0.6;
+    }
+    &__text {
+      ${ContentFont}
+      opacity: 0.8;
+    }
   }
 `;

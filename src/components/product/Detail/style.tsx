@@ -5,11 +5,13 @@ export const Container = styled.div`
   background-color: ${theme.colors.gray[400]};
   border-radius: 0.75rem;
   padding: 0.875rem;
-  h1 {
-    font-size: ${theme.fontSize.base};
-    color: ${theme.colors.white};
-    line-height: 1.5;
-    font-weight: ${theme.weight.medium}};
+  .PDetail {
+    &__title {
+      font-size: ${theme.fontSize.base};
+      color: ${theme.colors.white};
+      line-height: 1.5;
+      font-weight: ${theme.weight.medium}};
+    }
   }
 `;
 
@@ -18,25 +20,29 @@ export const Price = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 0.125rem 0;
-  .dash {
-    margin: 0 0.25em;
-  }
-  .currentPrice {
-    color: ${theme.colors.white};
-    font-size: ${theme.fontSize.xl};
-    line-height: 1.5rem;
-    font-weight: ${theme.weight.medium}};
-    .icon {
-      font-size: ${theme.fontSize.base};
+  .PDetail {
+    &__dash {
+      margin: 0 0.25em;
     }
   }
-  .originPrice {
-    color: ${theme.colors.white};
-    font-size: ${theme.fontSize.sm};
-    line-height: 1.5rem;
-    opacity: 0.3;
-    font-weight: ${theme.weight.regular}};
+`;
+
+export const CurrentPrice = styled.div`
+  color: ${theme.colors.white};
+  font-size: ${theme.fontSize.xl};
+  line-height: 1.5rem;
+  font-weight: ${theme.weight.medium}};
+  .icon {
+    font-size: ${theme.fontSize.base};
   }
+`;
+
+export const OriginPrice = styled.div`
+  color: ${theme.colors.white};
+  font-size: ${theme.fontSize.sm};
+  line-height: 1.5rem;
+  opacity: 0.3;
+  font-weight: ${theme.weight.regular}};
 `;
 
 export const List = styled.ul`

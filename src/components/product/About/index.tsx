@@ -14,8 +14,8 @@ export default function About(props: AboutProps) {
         <Fragment key={item.title}>
           {index !== 0 && <Bar />}
           <Content>
-            <h2>{item.title}</h2>
-            <p>{item.content}</p>
+            <h2 className="PAbout__title">{item.title}</h2>
+            <p className="PAbout__text">{item.content}</p>
           </Content>
         </Fragment>
       ))}

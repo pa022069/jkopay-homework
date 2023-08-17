@@ -6,6 +6,7 @@ interface ButtonProps {
   children: React.ReactNode;
   disabled?: boolean;
   type?: "button" | "submit" | "reset" | undefined;
+  style?: React.CSSProperties;
 }
 
 export default function Button(props: ButtonProps) {
@@ -15,6 +16,7 @@ export default function Button(props: ButtonProps) {
       isActive={props.isActive}
       onClick={props.onClick}
       type={props.type}
+      style={props.style}
     >
       {props.children}
     </Container>
