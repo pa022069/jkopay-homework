@@ -8,7 +8,11 @@ const data: StoreListType = {
       images: [
         {
           src: "/images/800x.webp",
-          alt: "商品圖",
+          alt: "商品圖1",
+        },
+        {
+          src: "/images/800x.webp",
+          alt: "商品圖2",
         },
       ],
       name: "LN 新竹街口攻城獅台灣封城紫色炫風聯名款限定發售復古球衣系列",

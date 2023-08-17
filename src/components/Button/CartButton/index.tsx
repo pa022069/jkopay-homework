@@ -13,13 +13,12 @@ export default function CartButton() {
   };
 
   useEffect(() => {
-    console.log(items);
     localStorage.setItem("shoppingCart", JSON.stringify(items));
   }, [items]);
   return (
     <StyleButton onClick={() => handleClearCart()}>
       <BsCartDash />
-      {items.length > 0 && <span>{items.length}</span>}
+      {items.length > 0 && <span className="count">{items.length}</span>}
       <p>購物車</p>
     </StyleButton>
   );

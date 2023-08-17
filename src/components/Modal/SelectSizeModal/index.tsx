@@ -19,6 +19,7 @@ import {
   formatCurrency,
   getMinMaxPriceFromIProductSelectData,
 } from "@/utils/helper";
+import { toast } from "react-toastify";
 import _ from "lodash";
 
 export default function SelectSizeModal() {
@@ -47,11 +48,22 @@ export default function SelectSizeModal() {
 
   // Action
   const onSubmit = (_data: any) => {
-    if (data.action === "加入購物車") {
-      dispatch(addItem(_.pickBy(_data, _.identity)));
-      dispatch(close());
+    if (data.action !== "加入購物車") {
+      toast.success("商品已購入 !", {
+        position: toast.POSITION.TOP_CENTER,
+        hideProgressBar: true,
+        autoClose: 1000,
+      });
+      return;
     }
+    dispatch(addItem(_.pickBy(_data, _.identity)));
+    dispatch(close());
     console.log(_data);
+    toast.success("商品已放入購物車 !", {
+      position: toast.POSITION.TOP_CENTER,
+      hideProgressBar: true,
+      autoClose: 1000,
+    });
   };
   const getProductData = useCallback(() => {
     const size = watch("size");
@@ -59,12 +71,12 @@ export default function SelectSizeModal() {
     const findSizeIndex: number = size
       ? data.options.findIndex((item) => item.size === size)
       : 0;
-    if (!size || !color)
+    if (!size && !color)
       return {
         id: data.id,
         price: 0,
       };
-    if (data.options[findSizeIndex].colors) {
+    if (data.options[findSizeIndex].colors !== undefined) {
       const findColorIndex: number = color
         ? data.options[findSizeIndex].colors.findIndex(
             (item) => item.color === color
@@ -81,17 +93,17 @@ export default function SelectSizeModal() {
   }, [sizeValue, setValue]);
   useEffect(() => {
     setValue("id", getProductData().id);
-  }, [colorValue, setValue, getProductData]);
+  }, [sizeValue, colorValue, setValue, getProductData]);
 
   if (!data) return null;
 
   return (
     <>
-      <Mask />
+      <Mask onClick={() => dispatch(close())} />
       <Container onSubmit={handleSubmit(onSubmit)}>
         <ModalHeader>
           <div className="Mheader__img">
-            <img src="./images/800x.webp" alt="" />
+            <img src={data.image.src} alt={data.image.alt} />
           </div>
           <div className="Mheader__content">
             <p className="Mheader__content--name">{data.name}</p>
@@ -99,7 +111,7 @@ export default function SelectSizeModal() {
               {getProductData().price ? (
                 <>
                   <span className="icon">$</span>
-                  {formatCurrency(getProductData().price)}
+                  {formatCurrency(getProductData().price || 0)}
                 </>
               ) : (
                 minMaxPrice.map((item: number, index: number) => (

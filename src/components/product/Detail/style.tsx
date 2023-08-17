@@ -9,6 +9,7 @@ export const Container = styled.div`
     font-size: ${theme.fontSize.base};
     color: ${theme.colors.white};
     line-height: 1.5;
+    font-weight: ${theme.weight.medium}};
   }
 `;
 
@@ -24,6 +25,7 @@ export const Price = styled.div`
     color: ${theme.colors.white};
     font-size: ${theme.fontSize.xl};
     line-height: 1.5rem;
+    font-weight: ${theme.weight.medium}};
     .icon {
       font-size: ${theme.fontSize.base};
     }
@@ -33,6 +35,7 @@ export const Price = styled.div`
     font-size: ${theme.fontSize.sm};
     line-height: 1.5rem;
     opacity: 0.3;
+    font-weight: ${theme.weight.regular}};
   }
 `;
 
@@ -42,6 +45,7 @@ export const List = styled.ul`
   line-height: 1.5;
   list-style-type: disc;
   padding-left: 1.5rem;
+  font-weight: ${theme.weight.regular}};
 `;
 
 export const TagsGroup = styled.div`
@@ -53,9 +57,10 @@ export const TagsGroup = styled.div`
 
 export const Tag = styled.div`
   background-color: ${theme.colors.red[800]};
-  color: ${theme.colors.white};
+  color: rgba(255, 255, 255, 0.9);
   font-size: ${theme.fontSize.xs};
   border-radius: 0.25rem;
   padding: 0.1875rem 0.375rem;
   line-height: 1.4;
+  font-weight: ${theme.weight.medium}};
 `;

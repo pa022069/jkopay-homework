@@ -35,6 +35,7 @@ export const getMinMaxPriceFromIProductSelectData = (
 };
 
 export const getMinMaxPrice = (data: any) => {
+  if (!data) return { price: [], originPrice: [] };
   let min = Infinity;
   let max = -Infinity;
   let minOrigin = Infinity;

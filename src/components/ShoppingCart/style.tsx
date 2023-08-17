@@ -17,6 +17,7 @@ export const ButtonGroup = styled.div<{
   align-items: center;
   gap: 0.5rem;
   flex: 1 1 auto;
+  font-weight: ${theme.weight.semibold}};
   button {
     flex: 1 1 calc(100% / ${(props) => props.length || 1});
   }

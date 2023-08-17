@@ -16,11 +16,9 @@ export const StyleButton = styled.button`
   padding: 0 0.5rem;
   padding-top: 0.5rem;
   cursor: pointer;
-  &:active {
-    opacity: 0.7;
-  }
+  font-weight: ${theme.weight.regular}};
 
-  span {
+  .count {
     position: absolute;
     right: 0.5rem;
     top: 0.15rem;

@@ -13,6 +13,13 @@ export default function ProductListPage() {
       >
         商品路徑
       </button>
+      <button
+        onClick={() => {
+          navigate("/112");
+        }}
+      >
+        查無商品
+      </button>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import SelectSizeModal from "@/components/Modal/SelectSizeModal";
 import ShoppingCart from "@components/ShoppingCart";
 import { useSelector } from "react-redux";
 import { selectProductSelect } from "@/redux/slices/productSelectSlice";
-import { Content, ContentWrapper } from "./style";
+import { Content, ContentWrapper, ErrorContent } from "./style";
 import { getMinMaxPrice } from "@/utils/helper";
 
 export default function ProductItemPage() {
@@ -20,10 +20,6 @@ export default function ProductItemPage() {
     (item: ProductPriceItem) => item.id === id
   );
 
-  if (!data) {
-    return <div>404</div>;
-  }
-
   const minMaxPrice = getMinMaxPrice(data);
 
   return (
@@ -33,30 +29,53 @@ export default function ProductItemPage() {
         navigate(-1);
       }}
     >
-      <ContentWrapper>
-        <ProductSlider images={data.images} />
-        <Content>
-          <ProductDetail
-            name={data.name}
-            tags={data.tags}
-            details={data.detail}
-            priceRange={minMaxPrice}
+      {!data ? (
+        <ErrorContent>查無商品</ErrorContent>
+      ) : (
+        <>
+          <ContentWrapper>
+            <ProductSlider
+              images={
+                data.images.length > 0
+                  ? data.images
+                  : [
+                      {
+                        src: "https://fakeimg.pl/600x600/?text=Hello",
+                        alt: "Hello",
+                      },
+                    ]
+              }
+            />
+            <Content>
+              <ProductDetail
+                name={data.name}
+                tags={data.tags}
+                details={data.detail}
+                priceRange={minMaxPrice}
+              />
+              {data.about && <AboutProduct data={data.about} />}
+            </Content>
+          </ContentWrapper>
+          <ShoppingCart
+            data={{
+              id: data.id,
+              name: data.name,
+              image:
+                data.images.length > 0
+                  ? data.images[0]
+                  : {
+                      src: "https://fakeimg.pl/600x600/?text=Hello",
+                      alt: "Hello",
+                    },
+              options: data.price,
+            }}
+            style={{
+              flex: "none",
+            }}
           />
-          {data.about && <AboutProduct data={data.about} />}
-        </Content>
-      </ContentWrapper>
-      <ShoppingCart
-        data={{
-          id: data.id,
-          name: data.name,
-          image: data.images[0],
-          options: data.price,
-        }}
-        style={{
-          flex: "none",
-        }}
-      />
-      {modalState.isOpen && <SelectSizeModal />}
+          {modalState.isOpen && <SelectSizeModal />}
+        </>
+      )}
     </TProductDetail>
   );
 }

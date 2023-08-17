@@ -17,6 +17,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  font-weight: ${theme.weight.regular}};
   h2 {
     ${ContentFont}
     opacity: 0.6;

@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import routes from "./routes";
 import "./index.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <QueryClientProvider client={queryClient}>
         <Suspense fallback={<PageLoading />}>
           <RouterProvider router={routes} />
+          <ToastContainer />
         </Suspense>
       </QueryClientProvider>
     </Provider>
