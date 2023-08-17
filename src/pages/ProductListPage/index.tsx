@@ -1,24 +1,35 @@
 import Header from "@components/Header";
 import { useNavigate } from "react-router-dom";
 import { ListBody, ListWrapper, ListItem } from "./style";
-import itemData from "@/mock/itemData";
 import { formatCurrency, getMinMaxPrice } from "@/utils/helper";
 import { ProductPriceItem } from "@/types";
 import { Fragment } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getProductList } from '@/api/product';
+import LoadingPage from "@/pages/LoadingPage";
 
 export default function ProductListPage() {
   const navigate = useNavigate();
+  const { data: apiData, isLoading } = useQuery({
+    queryKey: ["product", 'list'],
+    queryFn: getProductList,
+  });
+
+  if (isLoading) {
+    return (
+      <LoadingPage />
+    )
+  }
 
   const data = (_id: string) =>
-    itemData.itemList.find((item: ProductPriceItem) => item.id === _id);
-
+    apiData.itemList.find((item: ProductPriceItem) => item.id === _id);
   const minMaxPrice = (_id: string) => getMinMaxPrice(data(_id));
 
   return (
     <ListWrapper>
       <Header title="商品列表" />
       <ListBody>
-        {itemData.itemList.map((item) => (
+        {apiData.itemList.map((item: ProductPriceItem) => (
           <ListItem
             key={item.id}
             onClick={() => {

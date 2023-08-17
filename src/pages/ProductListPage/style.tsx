@@ -29,7 +29,7 @@ export const ListItem = styled.div`
   align-items: center;
   cursor: pointer;
   .image {
-    width: 40%;
+    flex: 0 0 25%;
     img {
       width: 100%;
     }
