@@ -13,6 +13,7 @@ export const Container = styled.button<{
   color: ${theme.colors.white};
   font-weight: ${theme.weight.semibold};
   font-size: ${theme.fontSize.lg};
+  cursor: pointer;
   &:active {
     opacity: 0.7;
   }

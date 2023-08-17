@@ -1,5 +1,4 @@
 import Header from "@components/Header";
-import ShoppingCart from "@components/ShoppingCart";
 import { Content, Wrapper } from "./style";
 
 interface ProductDetailProps {
@@ -19,11 +18,6 @@ export default function TProductDetail(props: ProductDetailProps) {
         title={props.storeName}
       />
       <Content>{props.children}</Content>
-      <ShoppingCart
-        style={{
-          flex: "none",
-        }}
-      />
     </Wrapper>
   );
 }

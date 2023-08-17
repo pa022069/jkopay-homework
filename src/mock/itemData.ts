@@ -1,8 +1,16 @@
-const data = {
+import { StoreListType } from "../types";
+
+const data: StoreListType = {
   storeName: "街口攻城獅官方商城",
   itemList: [
     {
       id: "11",
+      images: [
+        {
+          src: "/images/800x.webp",
+          alt: "商品圖",
+        },
+      ],
       name: "LN 新竹街口攻城獅台灣封城紫色炫風聯名款限定發售復古球衣系列",
       tags: ["街口結帳享九折優惠", "訂單滿 399 免運費"],
       about: [

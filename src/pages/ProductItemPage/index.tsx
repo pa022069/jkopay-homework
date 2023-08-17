@@ -6,11 +6,15 @@ import { ProductPriceItem } from "@/types";
 import TProductDetail from "@/template/ProductDetail";
 import ProductSlider from "@components/Slider/ProductSlider";
 import SelectSizeModal from "@/components/Modal/SelectSizeModal";
-import { Content } from "./style";
+import ShoppingCart from "@components/ShoppingCart";
+import { useSelector } from "react-redux";
+import { selectProductSelect } from "@/redux/slices/productSelectSlice";
+import { Content, ContentWrapper } from "./style";
 
 export default function ProductItemPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const modalState = useSelector(selectProductSelect);
   const data = itemData.itemList.find(
     (item: ProductPriceItem) => item.id === id
   );
@@ -20,19 +24,35 @@ export default function ProductItemPage() {
   }
 
   return (
-    <TProductDetail storeName={itemData.storeName} handleGoBack={() => {
-      navigate(-1);
-    }}>
-      <ProductSlider />
-      <Content>
-        <ProductDetail
-          name={data.name}
-          tags={data.tags}
-          details={data.detail}
-        />
-        {data.about && <AboutProduct data={data.about} />}
-      </Content>
-      <SelectSizeModal name={data.name} price={3999} options={data.price} />
+    <TProductDetail
+      storeName={itemData.storeName}
+      handleGoBack={() => {
+        navigate(-1);
+      }}
+    >
+      <ContentWrapper>
+        <ProductSlider images={data.images} />
+        <Content>
+          <ProductDetail
+            name={data.name}
+            tags={data.tags}
+            details={data.detail}
+          />
+          {data.about && <AboutProduct data={data.about} />}
+        </Content>
+      </ContentWrapper>
+      <ShoppingCart
+        data={{
+          id: data.id,
+          name: data.name,
+          image: data.images[0],
+          options: data.price,
+        }}
+        style={{
+          flex: "none",
+        }}
+      />
+      {modalState.isOpen && <SelectSizeModal />}
     </TProductDetail>
   );
 }

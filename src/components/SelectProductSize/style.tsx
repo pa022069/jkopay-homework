@@ -36,7 +36,11 @@ export const SelectGroup = styled.div`
   }
 `;
 
-export const RadioSelect = styled.div`
+export const RadioSelect = styled.div<{
+  isOutOfStock?: boolean;
+}>`
+  opacity: ${(props) => (props.isOutOfStock ? "0.2" : "1")};
+  pointer-events: ${(props) => (props.isOutOfStock ? "none" : "auto")};
   input:checked + label {
     background-color: ${theme.colors.red[400]};
     border: 1px solid ${theme.colors.red[400]};

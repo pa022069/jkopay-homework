@@ -3,7 +3,8 @@ import { Container, ButtonGroup } from "./style";
 import Button from "@/components/Button/NormalButton";
 import CartButton from "@/components/Button/CartButton";
 import { useDispatch } from "react-redux";
-import { addItem } from "@/redux/slices/shoppingCartSlice";
+import { open } from "@/redux/slices/productSelectSlice";
+import { ImageInfo, ProductPriceItemSize } from "@/types";
 
 interface ButtonType {
   text: string;
@@ -13,6 +14,12 @@ interface ButtonType {
 
 interface ShoppingCartProps {
   style?: React.CSSProperties;
+  data: {
+    id: string;
+    name: string;
+    image: ImageInfo;
+    options: ProductPriceItemSize[];
+  };
 }
 
 export default function ShoppingCart(props: ShoppingCartProps) {
@@ -23,12 +30,11 @@ export default function ShoppingCart(props: ShoppingCartProps) {
         text: "加入購物車",
         isActive: false,
         onClick: () => {
+          if (!props.data) return;
           dispatch(
-            addItem({
-              id: 111,
-              name: "LN 新竹街口攻城獅台灣封城紫色炫風聯名款限定發售復古球衣系列",
-              price: 1990,
-              quantity: 1,
+            open({
+              ...props.data,
+              action: "加入購物車",
             })
           );
         },
@@ -36,7 +42,15 @@ export default function ShoppingCart(props: ShoppingCartProps) {
       {
         text: "直接購買",
         isActive: true,
-        onClick: () => {},
+        onClick: () => {
+          if (!props.data) return;
+          dispatch(
+            open({
+              ...props.data,
+              action: "直接購買",
+            })
+          );
+        },
       },
     ],
     []

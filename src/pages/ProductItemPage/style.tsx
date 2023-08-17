@@ -6,3 +6,9 @@ export const Content = styled.div`
   gap: 0.75rem;
   padding: 0.75rem;
 `;
+
+export const ContentWrapper = styled.div`
+  flex: 1 1 auto;
+  height: 100%;
+  overflow-y: auto;
+`;

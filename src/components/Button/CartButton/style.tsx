@@ -15,6 +15,7 @@ export const StyleButton = styled.button`
   gap: 0.25rem;
   padding: 0 0.5rem;
   padding-top: 0.5rem;
+  cursor: pointer;
   &:active {
     opacity: 0.7;
   }

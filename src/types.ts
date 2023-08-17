@@ -17,11 +17,22 @@ export interface ProductPriceItemSize {
   colors: ProductPriceItemSizeDetail[];
 }
 
+export interface ImageInfo {
+  src: string;
+  alt: string;
+}
+
 export interface ProductPriceItem {
   id: string;
   name: string;
+  images: ImageInfo[];
   tags?: string[];
   about?: ArticleType[];
   detail?: string[];
   price: ProductPriceItemSize[];
+}
+
+export interface StoreListType {
+  storeName: string;
+  itemList: ProductPriceItem[];
 }
