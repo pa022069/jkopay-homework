@@ -14,7 +14,10 @@ export interface ProductPriceItemSizeDetail {
 export interface ProductPriceItemSize {
   id: string;
   size: string;
-  colors: ProductPriceItemSizeDetail[];
+  price?: number;
+  originPrice?: number;
+  stock?: number;
+  colors?: ProductPriceItemSizeDetail[];
 }
 
 export interface ImageInfo {
@@ -35,4 +38,13 @@ export interface ProductPriceItem {
 export interface StoreListType {
   storeName: string;
   itemList: ProductPriceItem[];
+}
+
+export interface IProductSelectData {
+  id: string;
+  name: string;
+  image: ImageInfo;
+  options: ProductPriceItemSize[];
+  action: string;
+  [key: string]: any;
 }

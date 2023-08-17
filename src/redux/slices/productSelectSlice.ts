@@ -1,21 +1,25 @@
-import { ImageInfo, ProductPriceItemSize } from "@/types";
+import { IProductSelectData } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IProductSelect {
   isOpen: boolean;
-  data?: {
-    id: string;
-    name: string;
-    image: ImageInfo;
-    options: ProductPriceItemSize[];
-    action: string;
-  };
+  data: IProductSelectData;
 }
 
 export const productSelectSlice = createSlice({
   name: "productSelect",
   initialState: {
     isOpen: false,
+    data: {
+      id: "",
+      name: "",
+      image: {
+        src: "",
+        alt: "",
+      },
+      options: [],
+      action: "",
+    },
   },
   reducers: {
     open: (state: IProductSelect, action) => {

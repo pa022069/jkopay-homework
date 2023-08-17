@@ -4,6 +4,10 @@ import theme from "@/utils/theme";
 export const Container = styled.button<{
   isActive?: boolean;
 }>`
+  &:disabled {
+    filter: grayscale(100%);
+    cursor: not-allowed;
+  }
   outline: none;
   border: none;
   background-color: ${(props: any) =>

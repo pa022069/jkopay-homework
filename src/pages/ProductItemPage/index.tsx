@@ -10,6 +10,7 @@ import ShoppingCart from "@components/ShoppingCart";
 import { useSelector } from "react-redux";
 import { selectProductSelect } from "@/redux/slices/productSelectSlice";
 import { Content, ContentWrapper } from "./style";
+import { getMinMaxPrice } from "@/utils/helper";
 
 export default function ProductItemPage() {
   const { id } = useParams();
@@ -22,6 +23,8 @@ export default function ProductItemPage() {
   if (!data) {
     return <div>404</div>;
   }
+
+  const minMaxPrice = getMinMaxPrice(data);
 
   return (
     <TProductDetail
@@ -37,6 +40,7 @@ export default function ProductItemPage() {
             name={data.name}
             tags={data.tags}
             details={data.detail}
+            priceRange={minMaxPrice}
           />
           {data.about && <AboutProduct data={data.about} />}
         </Content>

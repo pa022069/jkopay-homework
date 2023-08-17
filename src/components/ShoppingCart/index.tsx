@@ -53,7 +53,7 @@ export default function ShoppingCart(props: ShoppingCartProps) {
         },
       },
     ],
-    []
+    [dispatch, props.data]
   );
   return (
     <Container style={props.style}>

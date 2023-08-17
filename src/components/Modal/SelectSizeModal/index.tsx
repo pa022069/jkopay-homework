@@ -12,19 +12,26 @@ import Button from "@components/Button/NormalButton";
 import { close } from "@/redux/slices/productSelectSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectProductSelect } from "@/redux/slices/productSelectSlice";
+import { addItem } from "@/redux/slices/shoppingCartSlice";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { Fragment, useCallback, useEffect } from "react";
+import {
+  formatCurrency,
+  getMinMaxPriceFromIProductSelectData,
+} from "@/utils/helper";
+import _ from "lodash";
 
 export default function SelectSizeModal() {
   const { data } = useSelector(selectProductSelect);
-  if (!data) return null;
+  const minMaxPrice = getMinMaxPriceFromIProductSelectData(data, "options");
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
     watch,
     setValue,
-    formState: { errors },
+    formState: { isValid },
   } = useForm({
     defaultValues: {
       id: data.id,
@@ -35,14 +42,49 @@ export default function SelectSizeModal() {
     },
   });
 
+  const sizeValue = watch("size");
+  const colorValue = watch("size");
+
+  // Action
+  const onSubmit = (_data: any) => {
+    if (data.action === "加入購物車") {
+      dispatch(addItem(_.pickBy(_data, _.identity)));
+      dispatch(close());
+    }
+    console.log(_data);
+  };
+  const getProductData = useCallback(() => {
+    const size = watch("size");
+    const color = watch("color");
+    const findSizeIndex: number = size
+      ? data.options.findIndex((item) => item.size === size)
+      : 0;
+    if (!size || !color)
+      return {
+        id: data.id,
+        price: 0,
+      };
+    if (data.options[findSizeIndex].colors) {
+      const findColorIndex: number = color
+        ? data.options[findSizeIndex].colors.findIndex(
+            (item) => item.color === color
+          )
+        : 0;
+      return data.options[findSizeIndex].colors[findColorIndex];
+    }
+    return data.options[findSizeIndex];
+  }, [watch, data]);
+
+  // Effect
   useEffect(() => {
     setValue("color", undefined);
-  }, [watch("size")]);
+  }, [sizeValue, setValue]);
+  useEffect(() => {
+    setValue("id", getProductData().id);
+  }, [colorValue, setValue, getProductData]);
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
-  // console.log(errors);
+  if (!data) return null;
+
   return (
     <>
       <Mask />
@@ -53,10 +95,22 @@ export default function SelectSizeModal() {
           </div>
           <div className="Mheader__content">
             <p className="Mheader__content--name">{data.name}</p>
-            <p className="Mheader__content--price">
-              <span>$</span>
-              3999
-            </p>
+            <div className="Mheader__content--price">
+              {getProductData().price ? (
+                <>
+                  <span className="icon">$</span>
+                  {formatCurrency(getProductData().price)}
+                </>
+              ) : (
+                minMaxPrice.map((item: number, index: number) => (
+                  <Fragment key={item}>
+                    {index !== 0 && <span className="dash">-</span>}
+                    <span className="icon">$</span>
+                    {formatCurrency(item)}
+                  </Fragment>
+                ))
+              )}
+            </div>
           </div>
           <CloseButton onClick={() => dispatch(close())} />
         </ModalHeader>
@@ -73,7 +127,9 @@ export default function SelectSizeModal() {
           value={watch("qty")}
         />
         <SubmitButtonWrapper>
-          <Button isActive={true}>{data.action}</Button>
+          <Button isActive={true} disabled={!isValid}>
+            {data.action}
+          </Button>
         </SubmitButtonWrapper>
       </Container>
     </>

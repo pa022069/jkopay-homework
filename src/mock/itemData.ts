@@ -91,7 +91,7 @@ const data: StoreListType = {
               id: "1122",
               color: "紫旋風",
               stock: 8,
-              price: 2999,
+              price: 3500,
               originPrice: 3699,
             },
             {
@@ -113,36 +113,39 @@ const data: StoreListType = {
         {
           id: "113",
           size: "L",
-          colors: [
-            {
-              id: "1131",
-              color: "酷炫黑",
-              stock: 10,
-              price: 2999,
-              originPrice: 3699,
-            },
-            {
-              id: "1132",
-              color: "紫旋風",
-              stock: 0,
-              price: 2999,
-              originPrice: 3699,
-            },
-            {
-              id: "1133",
-              color: "暴風紅",
-              stock: 8,
-              price: 3999,
-              originPrice: 4699,
-            },
-            {
-              id: "1134",
-              color: "耀眼黃",
-              stock: 5,
-              price: 3999,
-              originPrice: 4699,
-            },
-          ],
+          price: 2999,
+          originPrice: 3699,
+          stock: 10,
+          // colors: [
+          //   {
+          //     id: "1131",
+          //     color: "酷炫黑",
+          //     stock: 10,
+          //     price: 2999,
+          //     originPrice: 3699,
+          //   },
+          //   {
+          //     id: "1132",
+          //     color: "紫旋風",
+          //     stock: 0,
+          //     price: 2999,
+          //     originPrice: 3699,
+          //   },
+          //   {
+          //     id: "1133",
+          //     color: "暴風紅",
+          //     stock: 8,
+          //     price: 3500,
+          //     originPrice: 4699,
+          //   },
+          //   {
+          //     id: "1134",
+          //     color: "耀眼黃",
+          //     stock: 5,
+          //     price: 3999,
+          //     originPrice: 4699,
+          //   },
+          // ],
         },
         {
           id: "114",
@@ -166,7 +169,7 @@ const data: StoreListType = {
               id: "1143",
               color: "暴風紅",
               stock: 0,
-              price: 3999,
+              price: 3500,
               originPrice: 4699,
             },
             {

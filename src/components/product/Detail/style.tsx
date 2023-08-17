@@ -12,6 +12,30 @@ export const Container = styled.div`
   }
 `;
 
+export const Price = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.125rem 0;
+  .dash {
+    margin: 0 0.25em;
+  }
+  .currentPrice {
+    color: ${theme.colors.white};
+    font-size: ${theme.fontSize.xl};
+    line-height: 1.5rem;
+    .icon {
+      font-size: ${theme.fontSize.base};
+    }
+  }
+  .originPrice {
+    color: ${theme.colors.white};
+    font-size: ${theme.fontSize.sm};
+    line-height: 1.5rem;
+    opacity: 0.3;
+  }
+`;
+
 export const List = styled.ul`
   font-size: ${theme.fontSize.sm};
   color: ${theme.colors.white};

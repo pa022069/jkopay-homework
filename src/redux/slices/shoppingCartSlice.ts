@@ -4,7 +4,7 @@ interface IShoppingCartItems {
   id: string;
   name: string;
   price: number;
-  quantity: number;
+  qty: number;
 }
 
 const getStateFromStorage = () => {
@@ -24,9 +24,9 @@ export const shoppingCartSlice = createSlice({
         (item: IShoppingCartItems) => item.id === action.payload.id
       );
       if (item) {
-        item.quantity++;
+        item.qty = item.qty + action.payload.qty;
       } else {
-        state.push({ ...action.payload, quantity: 1 });
+        state.push({ ...action.payload, qty: 1 });
       }
       return state;
     },

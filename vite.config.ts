@@ -1,15 +1,16 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import { resolve } from "path";
+import eslint from "vite-plugin-eslint";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), eslint()],
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
       "@components": resolve(__dirname, "src/components"),
-      "utils": resolve(__dirname, "src/utils"),
-    }
-  }
-})
+      utils: resolve(__dirname, "src/utils"),
+    },
+  },
+});

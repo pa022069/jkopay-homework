@@ -13,6 +13,7 @@ export default function CartButton() {
   };
 
   useEffect(() => {
+    console.log(items);
     localStorage.setItem("shoppingCart", JSON.stringify(items));
   }, [items]);
   return (

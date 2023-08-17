@@ -77,12 +77,15 @@ export const ModalHeader = styled.div`
       }
       &--name {
         font-size: ${theme.fontSize.sm};
-        line-height: 1.4rem;
+        line-height: 1.4;
       }
       &--price {
         font-size: ${theme.fontSize.xl};
-        line-height: 1.5rem;
-        span {
+        line-height: 1.5;
+        .dash {
+          margin: 0 0.25em;
+        }
+        .icon {
           font-size: ${theme.fontSize.base};
         }
       }
