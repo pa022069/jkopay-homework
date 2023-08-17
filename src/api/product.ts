@@ -3,7 +3,7 @@ import axios from "axios";
 export const getProductList = async () => {
   const response = await axios({
     method: "GET",
-    url: "http://97.74.84.85:4002/list",
+    url: "https://jeffrey-work.com/list",
   });
   return response.data;
 }
@@ -11,7 +11,7 @@ export const getProductList = async () => {
 export const postProductItem = async (data: any) => {
   const response = await axios({
     method: "POST",
-    url: "http://97.74.84.85:4002/item",
+    url: "https://jeffrey-work.com/item",
     data
   });
   return response.data;
