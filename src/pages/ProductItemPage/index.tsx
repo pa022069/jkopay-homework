@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
-import AboutProduct from "@components/Product/About";
-import ProductDetail from "@components/Product/Detail";
+import AboutProduct from "@components/ProductContent/About";
+import ProductDetail from "@components/ProductContent/Detail";
 // import { ProductPriceItem } from "@/types";
 import TProductDetail from "@/template/ProductDetail";
 import ProductSlider from "@components/Slider/ProductSlider";
