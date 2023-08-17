@@ -158,7 +158,7 @@ const data: StoreListType = {
             {
               id: "1142",
               color: "紫旋風",
-              stock: 8,
+              stock: 0,
               price: 2999,
               originPrice: 3699,
             },
@@ -172,7 +172,7 @@ const data: StoreListType = {
             {
               id: "1144",
               color: "耀眼黃",
-              stock: 5,
+              stock: 0,
               price: 3999,
               originPrice: 4699,
             },

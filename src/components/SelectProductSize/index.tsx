@@ -9,6 +9,10 @@ interface SelectProductSizeProps {
 }
 
 export default function SelectProductSize(props: SelectProductSizeProps) {
+  const findSizeIndex = props.sizeValue
+    ? _.findIndex(props.options, ["size", props.sizeValue])
+    : 0;
+
   return (
     <Container>
       <SelectGroup>
@@ -17,8 +21,14 @@ export default function SelectProductSize(props: SelectProductSizeProps) {
           <p className="SGHeader__sub">補充說明</p>
         </div>
         <div className="SGContent">
-          {props.options.map((item) => (
-            <RadioSelect key={item.size}>
+          {props.options.map((item, index) => (
+            <RadioSelect
+              key={item.size}
+              isOutOfStock={
+                _.filter(props.options[index].colors, (o) => o.stock > 0)
+                  .length === 0
+              }
+            >
               <input
                 {...props.register("size", {
                   required: "請選擇尺寸",
@@ -38,11 +48,7 @@ export default function SelectProductSize(props: SelectProductSizeProps) {
           <p className="SGHeader__sub">補充說明</p>
         </div>
         <div className="SGContent">
-          {props.options[
-            props.sizeValue
-              ? _.findIndex(props.options, ["size", props.sizeValue])
-              : 0
-          ].colors.map((item) => (
+          {props.options[findSizeIndex].colors.map((item) => (
             <RadioSelect key={item.color} isOutOfStock={item.stock === 0}>
               <input
                 {...props.register("color", {
