@@ -12,6 +12,7 @@ function ProductSlider(props: ProductSliderProps) {
     showThumbs: false,
     showIndicators: false,
     showArrows: false,
+    emulateTouch: true,
     statusFormatter: (current: number, total: number) => `${current}/${total}`,
   };
   return (
