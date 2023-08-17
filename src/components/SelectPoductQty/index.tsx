@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Container, QtyGroup } from "./style";
 import { BsPlus, BsDash } from "react-icons/bs";
 
@@ -5,9 +6,10 @@ interface SelectProductQtyProps {
   register: any;
   setValue: any;
   value: number;
+  maxQty?: number;
 }
 
-export default function SelectProductQty(props: SelectProductQtyProps) {
+function SelectProductQty(props: SelectProductQtyProps) {
   return (
     <Container>
       <QtyGroup>
@@ -15,6 +17,7 @@ export default function SelectProductQty(props: SelectProductQtyProps) {
         <div className="QGBody__qty">
           <button
             type="button"
+            disabled={props.value === 1}
             onClick={() => {
               if (props.value > 1) {
                 props.setValue("qty", props.value - 1);
@@ -26,12 +29,14 @@ export default function SelectProductQty(props: SelectProductQtyProps) {
           <input
             {...props.register("qty", {
               min: 1,
+              max: props.maxQty || 100,
             })}
             type="number"
             id="qty"
           />
           <button
             type="button"
+            disabled={!props.maxQty || props.value === props.maxQty}
             onClick={() => {
               props.setValue("qty", props.value + 1);
             }}
@@ -43,3 +48,5 @@ export default function SelectProductQty(props: SelectProductQtyProps) {
     </Container>
   );
 }
+
+export default memo(SelectProductQty);

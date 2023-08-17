@@ -1,6 +1,7 @@
 import { Container, RadioSelect, SelectGroup } from "./style";
 import { ProductPriceItemSize } from "@/types";
 import _ from "lodash";
+import { memo } from "react";
 
 interface SelectProductSizeProps {
   options: ProductPriceItemSize[];
@@ -8,7 +9,7 @@ interface SelectProductSizeProps {
   sizeValue: string | undefined;
 }
 
-export default function SelectProductSize(props: SelectProductSizeProps) {
+function SelectProductSize(props: SelectProductSizeProps) {
   const findSizeIndex = props.sizeValue
     ? _.findIndex(props.options, ["size", props.sizeValue])
     : 0;
@@ -27,7 +28,7 @@ export default function SelectProductSize(props: SelectProductSizeProps) {
               isOutOfStock={
                 props.options[index].colors
                   ? _.filter(props.options[index].colors, (o) => o.stock > 0)
-                      .length === 0
+                    .length === 0
                   : item.stock === 0
               }
             >
@@ -70,3 +71,5 @@ export default function SelectProductSize(props: SelectProductSizeProps) {
     </Container>
   );
 }
+
+export default memo(SelectProductSize);

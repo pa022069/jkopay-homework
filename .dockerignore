@@ -1,0 +1,19 @@
+.dockerignore
+Dockerfile
+.gitlab-ci.yml
+README.node_modules
+.git/
+dist
+mochawesome-report
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+

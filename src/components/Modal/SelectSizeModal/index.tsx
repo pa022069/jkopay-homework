@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectProductSelect } from "@/redux/slices/productSelectSlice";
 import { addItem } from "@/redux/slices/shoppingCartSlice";
 import { useForm } from "react-hook-form";
-import { Fragment, useCallback, useEffect } from "react";
+import { Fragment, memo, useCallback, useEffect } from "react";
 import {
   formatCurrency,
   getMinMaxPriceFromIProductSelectData,
@@ -22,7 +22,7 @@ import {
 import { toast } from "react-toastify";
 import _ from "lodash";
 
-export default function SelectSizeModal() {
+function SelectSizeModal() {
   const { data } = useSelector(selectProductSelect);
   const minMaxPrice = getMinMaxPriceFromIProductSelectData(data, "options");
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ export default function SelectSizeModal() {
   });
 
   const sizeValue = watch("size");
-  const colorValue = watch("size");
+  const colorValue = watch("color");
 
   // Action
   const onSubmit = (_data: any) => {
@@ -58,7 +58,6 @@ export default function SelectSizeModal() {
     }
     dispatch(addItem(_.pickBy(_data, _.identity)));
     dispatch(close());
-    console.log(_data);
     toast.success("商品已放入購物車 !", {
       position: toast.POSITION.TOP_CENTER,
       hideProgressBar: true,
@@ -66,26 +65,24 @@ export default function SelectSizeModal() {
     });
   };
   const getProductData = useCallback(() => {
-    const size = watch("size");
-    const color = watch("color");
-    const findSizeIndex: number = size
-      ? data.options.findIndex((item) => item.size === size)
+    const findSizeIndex: number = sizeValue
+      ? data.options.findIndex((item) => item.size === sizeValue)
       : 0;
-    if (!size && !color)
+    if (!sizeValue && !colorValue)
       return {
         id: data.id,
         price: 0,
       };
     if (data.options[findSizeIndex].colors !== undefined) {
-      const findColorIndex: number = color
+      const findColorIndex: number = colorValue
         ? data.options[findSizeIndex].colors.findIndex(
-            (item) => item.color === color
-          )
+          (item) => item.color === colorValue
+        )
         : 0;
       return data.options[findSizeIndex].colors[findColorIndex];
     }
     return data.options[findSizeIndex];
-  }, [watch, data]);
+  }, [data, sizeValue, colorValue]);
 
   // Effect
   useEffect(() => {
@@ -93,6 +90,7 @@ export default function SelectSizeModal() {
   }, [sizeValue, setValue]);
   useEffect(() => {
     setValue("id", getProductData().id);
+    setValue("qty", 1);
   }, [sizeValue, colorValue, setValue, getProductData]);
 
   if (!data) return null;
@@ -137,6 +135,7 @@ export default function SelectSizeModal() {
           register={register}
           setValue={setValue}
           value={watch("qty")}
+          maxQty={getProductData().stock}
         />
         <SubmitButtonWrapper>
           <Button isActive={true} disabled={!isValid}>
@@ -147,3 +146,5 @@ export default function SelectSizeModal() {
     </>
   );
 }
+
+export default memo(SelectSizeModal);

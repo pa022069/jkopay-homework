@@ -36,6 +36,9 @@ export const QtyGroup = styled.div`
         &:active {
           opacity: 0.7;
         }
+        &:disabled {
+          opacity: 0.1;
+        }
       }
       input {
         width: 2em;

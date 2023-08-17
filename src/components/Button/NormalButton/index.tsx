@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Container } from "./style";
 
 interface ButtonProps {
@@ -9,7 +10,7 @@ interface ButtonProps {
   style?: React.CSSProperties;
 }
 
-export default function Button(props: ButtonProps) {
+function Button(props: ButtonProps) {
   return (
     <Container
       disabled={props.disabled}
@@ -22,3 +23,5 @@ export default function Button(props: ButtonProps) {
     </Container>
   );
 }
+
+export default memo(Button);

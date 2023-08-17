@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { Container, ButtonGroup } from "./style";
 import Button from "@/components/Button/NormalButton";
 import CartButton from "@/components/Button/CartButton";
@@ -22,7 +22,7 @@ interface ShoppingCartProps {
   };
 }
 
-export default function ShoppingCart(props: ShoppingCartProps) {
+function ShoppingCart(props: ShoppingCartProps) {
   const dispatch = useDispatch();
   const buttonList: ButtonType[] = useMemo(
     () => [
@@ -75,3 +75,5 @@ export default function ShoppingCart(props: ShoppingCartProps) {
     </Container>
   );
 }
+
+export default memo(ShoppingCart);

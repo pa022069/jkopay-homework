@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { ListBody, ListWrapper, ListItem } from "./style";
 import { formatCurrency, getMinMaxPrice } from "@/utils/helper";
 import { ProductPriceItem } from "@/types";
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getProductList } from '@/api/product';
 import LoadingPage from "@/pages/LoadingPage";
 
-export default function ProductListPage() {
+function ProductListPage() {
   const navigate = useNavigate();
   const { data: apiData, isLoading } = useQuery({
     queryKey: ["product", 'list'],
@@ -66,3 +66,5 @@ export default function ProductListPage() {
     </ListWrapper>
   );
 }
+
+export default memo(ProductListPage);

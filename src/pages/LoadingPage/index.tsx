@@ -1,4 +1,5 @@
 import theme from "@/utils/theme";
+import { memo } from "react";
 import { styled } from "styled-components"
 
 const LoadingWrapper = styled.div`
@@ -13,10 +14,12 @@ const LoadingWrapper = styled.div`
   }
 `;
 
-export default function LoadingPage() {
+function LoadingPage() {
   return (
     <LoadingWrapper>
       <p>Loading...</p>
     </LoadingWrapper>
   )
 };
+
+export default memo(LoadingPage);

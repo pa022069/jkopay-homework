@@ -1,0 +1,45 @@
+image: node
+
+variables:
+  IMAGE_VERSION: "1.0.0"
+
+stages:
+  - build
+  # - test
+  - docker
+
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+
+# cypress_test:
+#   image: cypress/base:16.18.1
+#   stage: test
+#   needs:
+#     - build
+#   script:
+#     - npm ci
+#     - npm install -g serve
+#     - npm install -g wait-on
+#     - serve -s dist &
+#     - wait-on http://localhost:3000
+#     - npm run cypress:run
+
+build_docker:
+  stage: docker
+  image: docker
+  services:
+    - docker:dind
+  # needs:
+  #   - cypress_test
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:$IMAGE_VERSION .
+    - docker push $CI_REGISTRY_IMAGE:$IMAGE_VERSION

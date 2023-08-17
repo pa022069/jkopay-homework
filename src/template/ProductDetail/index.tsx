@@ -1,5 +1,6 @@
 import Header from "@components/Header";
 import { Content, Wrapper } from "./style";
+import { memo } from "react";
 
 interface ProductDetailProps {
   storeName: string;
@@ -7,7 +8,7 @@ interface ProductDetailProps {
   handleGoBack?: () => void;
 }
 
-export default function TProductDetail(props: ProductDetailProps) {
+function TProductDetail(props: ProductDetailProps) {
   return (
     <Wrapper>
       <Header
@@ -21,3 +22,5 @@ export default function TProductDetail(props: ProductDetailProps) {
     </Wrapper>
   );
 }
+
+export default memo(TProductDetail);

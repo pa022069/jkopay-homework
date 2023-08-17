@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Container, LeftArrowIcon, HeaderTitle } from "./style";
 
 interface HeaderProps {
@@ -6,7 +7,7 @@ interface HeaderProps {
   handleGoBack?: () => void;
 }
 
-export default function Header(props: HeaderProps) {
+function Header(props: HeaderProps) {
   return (
     <Container style={props.style}>
       {
@@ -16,3 +17,5 @@ export default function Header(props: HeaderProps) {
     </Container>
   );
 }
+
+export default memo(Header);

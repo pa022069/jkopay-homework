@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { Bar } from "@/components/Bar";
 import { Container, Content } from "./style";
 import { ArticleType } from "@/types";
@@ -7,7 +7,7 @@ interface AboutProps {
   data: ArticleType[];
 }
 
-export default function About(props: AboutProps) {
+function About(props: AboutProps) {
   return (
     <Container>
       {props.data.map((item: ArticleType, index: number) => (
@@ -22,3 +22,5 @@ export default function About(props: AboutProps) {
     </Container>
   );
 }
+
+export default memo(About);

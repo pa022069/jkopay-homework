@@ -13,4 +13,13 @@ export default defineConfig({
       utils: resolve(__dirname, "src/utils"),
     },
   },
+  base: "./",
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    host: true,
+    strictPort: true,
+    port: 3000,
+  },
 });

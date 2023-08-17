@@ -2,11 +2,12 @@ import { ImageInfo } from "@/types";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { StyledCarousel } from "./style";
 import { Carousel } from "react-responsive-carousel";
+import { memo } from "react";
 
 interface ProductSliderProps {
   images: ImageInfo[];
 }
-export default function ProductSlider(props: ProductSliderProps) {
+function ProductSlider(props: ProductSliderProps) {
   const carouselSetting = {
     showThumbs: false,
     showIndicators: false,
@@ -30,3 +31,5 @@ export default function ProductSlider(props: ProductSliderProps) {
     </StyledCarousel>
   );
 }
+
+export default memo(ProductSlider);

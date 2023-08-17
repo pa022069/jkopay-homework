@@ -12,10 +12,10 @@ import { Content, ContentWrapper, ErrorContent } from "./style";
 import { getMinMaxPrice } from "@/utils/helper";
 import { useMutation } from "@tanstack/react-query";
 import { postProductItem } from "@/api/product";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import LoadingPage from "../LoadingPage";
 
-export default function ProductItemPage() {
+function ProductItemPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const modalState = useSelector(selectProductSelect);
@@ -93,3 +93,5 @@ export default function ProductItemPage() {
     </TProductDetail>
   );
 }
+
+export default memo(ProductItemPage);

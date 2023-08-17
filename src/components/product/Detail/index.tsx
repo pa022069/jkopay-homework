@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { Container, List, TagsGroup, Tag, Price, CurrentPrice, OriginPrice } from "./style";
 import { Bar } from "@/components/Bar";
 import { formatCurrency } from "@/utils/helper";
@@ -12,7 +12,7 @@ interface DetailProps {
   };
 }
 
-export default function Detail(props: DetailProps) {
+function Detail(props: DetailProps) {
   return (
     <Container>
       <h1 className="PDetail__title">{props.name}</h1>
@@ -57,3 +57,5 @@ export default function Detail(props: DetailProps) {
     </Container>
   );
 }
+
+export default memo(Detail);

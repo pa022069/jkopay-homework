@@ -1,9 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, memo } from "react";
 import { BsCartDash } from "react-icons/bs";
 import { StyleButton, ButtonCount, ButtonText } from "./style";
 import { useSelector, useDispatch } from "react-redux";
 import { selectItems, clearList } from "@/redux/slices/shoppingCartSlice";
-export default function CartButton() {
+function CartButton() {
   const items = useSelector(selectItems);
   const dispatch = useDispatch();
 
@@ -23,3 +23,5 @@ export default function CartButton() {
     </StyleButton>
   );
 }
+
+export default memo(CartButton);
