@@ -3,6 +3,8 @@ import { BsCartDash } from "react-icons/bs";
 import { StyleButton, ButtonCount, ButtonText } from "./style";
 import { useSelector, useDispatch } from "react-redux";
 import { selectItems, clearList } from "@/redux/slices/shoppingCartSlice";
+import { toast } from "react-toastify";
+
 function CartButton() {
   const items = useSelector(selectItems);
   const dispatch = useDispatch();
@@ -10,6 +12,11 @@ function CartButton() {
   const handleClearCart = () => {
     localStorage.removeItem("shoppingCart");
     dispatch(clearList());
+    toast.success("清除購物車 !", {
+      position: toast.POSITION.TOP_CENTER,
+      hideProgressBar: true,
+      autoClose: 1000,
+    });
   };
 
   useEffect(() => {
