@@ -72,12 +72,13 @@ function SelectSizeModal() {
       return {
         id: data.id,
         price: 0,
+        stock: 0,
       };
     if (data.options[findSizeIndex].colors !== undefined) {
       const findColorIndex: number = colorValue
         ? data.options[findSizeIndex].colors.findIndex(
-          (item) => item.color === colorValue
-        )
+            (item) => item.color === colorValue
+          )
         : 0;
       return data.options[findSizeIndex].colors[findColorIndex];
     }

@@ -8,11 +8,15 @@ npm install
 npm run dev
 ```
 
-## Demo Server
+## API
 
-```
-npm run server
-```
+1. 取得列表資料：
+    - 路徑：https://jeffrey-work.com/list
+    - 方法：[GET]
+2. 取得商品資料：
+    - 路徑：https://jeffrey-work.com/item
+    - 方法：[POST]
+    - 參數：[id]
 
 ## Packages
 
