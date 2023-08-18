@@ -18,7 +18,8 @@ export const Container = styled.div`
 export const Price = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0 0.5rem;
   padding: 0.125rem 0;
   .PDetail {
     &__dash {
