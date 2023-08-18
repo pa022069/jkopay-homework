@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "tsc && vite build && vite preview --port 3000",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
@@ -37,5 +38,16 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-eslint": "^1.8.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/rd-component.es.js",
+      "require": "./dist/rd-component.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    }
   }
 }

@@ -65,24 +65,20 @@ function SelectSizeModal() {
     });
   };
   const getProductData = useCallback(() => {
-    const findSizeIndex: number = sizeValue
-      ? data.options.findIndex((item) => item.size === sizeValue)
-      : 0;
-    if (!sizeValue && !colorValue)
-      return {
+    const findMatchSize = _.find(data.options, {
+      size: sizeValue,
+    });
+    const findMatchColor = _.find(findMatchSize?.colors, {
+      color: colorValue,
+    });
+    return (
+      findMatchColor ||
+      findMatchSize || {
         id: data.id,
         price: 0,
         stock: 0,
-      };
-    if (data.options[findSizeIndex].colors !== undefined) {
-      const findColorIndex: number = colorValue
-        ? data.options[findSizeIndex].colors.findIndex(
-            (item) => item.color === colorValue
-          )
-        : 0;
-      return data.options[findSizeIndex].colors[findColorIndex];
-    }
-    return data.options[findSizeIndex];
+      }
+    );
   }, [data, sizeValue, colorValue]);
 
   // Effect

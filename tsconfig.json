@@ -25,6 +25,6 @@
       "@components/*": ["src/components/*"],
     },
   },
-  "include": ["src", "**/*.ts", "**/*.tsx", "**/*.json"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vitest.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
